@@ -23,6 +23,25 @@ namespace VendorOrder.Tests
       Order newOrder = new Order(name, description);
       string resultName = newOrder.Name;
       string resultDescription = newOrder.Description;
+
+      Assert.AreEqual((name, description), (resultName, resultDescription));
+    }
+    [TestMethod]
+    public void SetParameter_SetDescriptionName_String()
+    {
+      string name = "pizza";
+      string description = "mild spiced pepperoni pizza";
+      Order newOrder = new Order(name, description);
+
+      string updatedName = "coke";
+      string updatedDescription = "sugarfree coke";
+      newOrder.Name = updatedName;
+      newOrder.Description = updatedDescription;
+      string resultName = newOrder.Name;
+      string resultDescription = newOrder.Description;
+
+      Assert.AreEqual((updatedName, updatedDescription), (resultName, resultDescription));
+
     }
   }
 }
