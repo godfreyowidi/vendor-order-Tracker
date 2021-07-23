@@ -15,33 +15,43 @@ namespace VendorOrder.Tests
       Assert.AreEqual(typeof(Order), newOrder.GetType());
     }
     [TestMethod]
-    public void GetParameters_ReturnDescriptionName_String()
+    public void GetParameters_ReturnDescriptionTitle_String()
     {
-      string name = "pizza";
+      string title = "pizza";
       string description = "mild spiced pepperoni pizza";
       
-      Order newOrder = new Order(name, description);
-      string resultName = newOrder.Name;
+      Order newOrder = new Order(title, description);
+      string resultTitle = newOrder.Title;
       string resultDescription = newOrder.Description;
 
-      Assert.AreEqual((name, description), (resultName, resultDescription));
+      Assert.AreEqual((title, description), (resultTitle, resultDescription));
     }
     [TestMethod]
-    public void SetParameter_SetDescriptionName_String()
+    public void SetParameter_SetDescriptionTitle_String()
     {
-      string name = "pizza";
+      string title = "pizza";
       string description = "mild spiced pepperoni pizza";
-      Order newOrder = new Order(name, description);
+      Order newOrder = new Order(title, description);
 
-      string updatedName = "coke";
+      string updatedTitle = "coke";
       string updatedDescription = "sugarfree coke";
-      newOrder.Name = updatedName;
+      newOrder.Title = updatedTitle;
       newOrder.Description = updatedDescription;
-      string resultName = newOrder.Name;
+      string resultTitle = newOrder.Title;
       string resultDescription = newOrder.Description;
 
-      Assert.AreEqual((updatedName, updatedDescription), (resultName, resultDescription));
+      Assert.AreEqual((updatedTitle, updatedDescription), (resultTitle, resultDescription));
 
+    }
+    [TestMethod]
+    public void GetAll_ReturnEmptyList_OrderList()
+    {
+      List<Order> newList = new List<Order> { };
+
+      //List<Order> resultTitle = Order.GetAll();
+      List<Order> resultDescription = Order.GetAll();
+
+      CollectionAssert.AreEqual(newList, resultDescription);
     }
   }
 }
