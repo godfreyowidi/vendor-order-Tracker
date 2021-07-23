@@ -14,5 +14,15 @@ namespace VendorOrder.Tests
       Order newOrder = new Order("test1", "test2");
       Assert.AreEqual(typeof(Order), newOrder.GetType());
     }
+    [TestMethod]
+    public void GetParameters_ReturnDescriptionName_String()
+    {
+      string name = "pizza";
+      string description = "mild spiced pepperoni pizza";
+      
+      Order newOrder = new Order(name, description);
+      string resultName = newOrder.Name;
+      string resultDescription = newOrder.Description;
+    }
   }
 }
