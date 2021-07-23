@@ -64,5 +64,19 @@ namespace VendorOrder.Tests
 
       Assert.AreEqual(newVendor2, result);
     }
+    [TestMethod]
+    public void AddOrder_LinkOrderWithVendor_OrderList()
+    {
+      string description = "mild spiced pepperoni pizza";
+      Order newOrder = new Order(description);
+      List<Order> newList = new List<Order> {newOrder};
+      string name = "Suzie's Cafe";
+      Vendor newVendor = new Vendor(name);
+      newVendor.AddOrder(newOrder);
+
+      List<Order> result = newVendor.Orders;
+
+      CollectionAssert.AreEqual(newList, result);
+    }
   }
 }
