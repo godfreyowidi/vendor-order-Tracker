@@ -4,15 +4,14 @@ namespace VendorOrder.Models
 {
   public class Order
   {
-    public string Title { get; set; }
+    public string Title { get; }
     public int Id { get; }
     public string Description { get; set; }
     private static List<Order> _instances = new List<Order> { };
 
-    public Order(string title, string description)
+    public Order(string description)
     {
       Description = description;
-      Title = title;
       _instances.Add(this);
       Id = _instances.Count;
     }

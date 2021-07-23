@@ -15,36 +15,31 @@ namespace VendorOrder.Tests
     [TestMethod]
     public void OrderConstructor_CreatesInstanceOfOrder_Order()
     {
-      Order newOrder = new Order("test1", "test2");
+      Order newOrder = new Order("test");
       Assert.AreEqual(typeof(Order), newOrder.GetType());
     }
     [TestMethod]
-    public void GetParameters_ReturnDescriptionTitle_String()
+    public void GetParameters_ReturnDescription_String()
     {
-      string title = "pizza";
+      
       string description = "mild spiced pepperoni pizza";
       
-      Order newOrder = new Order(title, description);
-      string resultTitle = newOrder.Title;
+      Order newOrder = new Order(description);
       string resultDescription = newOrder.Description;
 
-      Assert.AreEqual((title, description), (resultTitle, resultDescription));
+      Assert.AreEqual(description, resultDescription);
     }
     [TestMethod]
-    public void SetParameter_SetDescriptionTitle_String()
+    public void SetParameter_SetDescription_String()
     {
-      string title = "pizza";
       string description = "mild spiced pepperoni pizza";
-      Order newOrder = new Order(title, description);
+      Order newOrder = new Order(description);
 
-      string updatedTitle = "coke";
       string updatedDescription = "sugarfree coke";
-      newOrder.Title = updatedTitle;
       newOrder.Description = updatedDescription;
-      string resultTitle = newOrder.Title;
       string resultDescription = newOrder.Description;
 
-      Assert.AreEqual((updatedTitle, updatedDescription), (resultTitle, resultDescription));
+      Assert.AreEqual(updatedDescription, resultDescription);
 
     }
     [TestMethod]
@@ -52,10 +47,25 @@ namespace VendorOrder.Tests
     {
       List<Order> newList = new List<Order> { };
 
-      //List<Order> resultTitle = Order.GetAll();
+      List<Order> resultTitle = Order.GetAll();
       List<Order> resultDescription = Order.GetAll();
 
       CollectionAssert.AreEqual(newList, resultDescription);
+    }
+
+    [TestMethod]
+    public void GetAll_ReturnOrders_OrderList()
+    {
+      string description1 = "mild spiced pepperoni pizza";
+      string description2 = "sugarfree coke";
+
+      Order newOrder1 = new Order(description1);
+      Order newOrder2 = new Order(description2);
+      List<Order> newList = new List<Order> { newOrder1, newOrder2 };
+
+      List<Order> result = Order.GetAll();
+
+      CollectionAssert.AreEqual(newList, result);
     }
   }
 }
