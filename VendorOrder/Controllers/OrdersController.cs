@@ -11,7 +11,7 @@ namespace VendorOrder.Controllers
     public ActionResult New(int vendorId)
     {
       Vendor vendor = Vendor.Find(vendorId);
-      return View(vendorId);
+      return View(vendor);
     }
     [HttpPost("/orders/delete")]
     public ActionResult DeleteAll()
@@ -24,7 +24,7 @@ namespace VendorOrder.Controllers
     {
       Order order = Order.Find(orderId);
       Vendor vendor = Vendor.Find(vendorId);
-      Dictionary<string, objects> model = new Dictionary<string, object>();
+      Dictionary<string, object> model = new Dictionary<string, object>();
       model.Add("order", order);
       model.Add("vendor", vendor);
       return View(model);

@@ -20,9 +20,9 @@ namespace VendorOrder.Controllers
       return View();
     }
     [HttpPost("/vendors")]
-    public ActionResult Create(string VendorName)
+    public ActionResult Create(string vendorName)
     {
-      Vendor newVendor = new Vendor(VendorName);
+      Vendor newVendor = new Vendor(vendorName);
       return RedirectToAction("Index");
     }
     [HttpGet("/vendors/{id}")]
@@ -36,7 +36,7 @@ namespace VendorOrder.Controllers
       return View(model);
     }
 
-    [HttpPost("/vendors/{vendorId}/items")]
+    [HttpPost("/vendors/{vendorId}/orders")]
     public ActionResult Create(int vendorId, string orderDescription)
     {
       Dictionary<string, object> model = new Dictionary<string, object>();
